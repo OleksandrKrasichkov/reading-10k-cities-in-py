@@ -50,13 +50,7 @@ def setFirstMinv(cities):
              lons = lon1 - cities[j][2]
              distance=math.sqrt(lats*lats + lons*lons)
             if distance != 0:
-                return {
-                        'minv': distance
-                        'mincity1': cities[i][0]
-                        'mincity2': cities[j][0]
-                        'mincoord1': [cities[i][1], cities[i][2]]
-                        'mincoord2' :  [cities[j][1], cities[j][2]]
-                }
+                return [distance, cities[i][0], cities[j][0],[cities[i][1],cities[i][2]],[cities[j][1],cities[j][2]]]
 
 
 if __name__ == '__main__':
