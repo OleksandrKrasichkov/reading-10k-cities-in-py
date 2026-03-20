@@ -19,7 +19,7 @@ def main():
             lats = lat1 - cities[j][1]
             lons = lon1 - cities[j][2]
             distance=math.sqrt(lats*lats + lons*lons)
-            if(minv > distance):
+            if(minv > distance > 0.1):
                 minv = distance
                 mincity1 = cities[i][0]
                 mincity2=cities[j][0]
