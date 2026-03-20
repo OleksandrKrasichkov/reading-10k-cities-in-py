@@ -16,27 +16,25 @@ def main():
     maxcity2 = mincity2
     maxcoord1 = mincoord1
     maxcoord2 = mincoord2
-    for city in cities:
-        lat1=city[1]
-        lon1=city[2]
-        for city2 in cities:
-            if city[0] == city2[0]:
-                continue
-            lats = lat1 - city2[1]
-            lons = lon1 - city2[2]
+    for i in range(len(cities) - 1):
+        lat1=cities[i][1]
+        lon1=cities[i][2]
+        for j in range(i+1,len(cities)):
+            lats = lat1 - cities[j][1]
+            lons = lon1 - cities[j][2]
             distance=math.sqrt(lats*lats + lons*lons)
             if(minv > distance):
                 minv = distance
-                mincity1 = city[0]
-                mincity2=city2[0]
-                mincoord1=[city[1], city[2]]
-                mincoord2 = [city2[1], city2[2]]
+                mincity1 = cities[i][0]
+                mincity2=cities[j][0]
+                mincoord1=[cities[i][1], cities[i][2]]
+                mincoord2 = [cities[j][1], cities[j][2]]
             if(maxv < distance):
                 maxv = distance
-                maxcity1 = city[0]
-                maxcity2 = city2[0]
-                maxcoord1 = [city[1],city[2]]
-                maxcoord2 = [city2[1], city2[2]]
+                maxcity1 = cities[i][0]
+                maxcity2 = cities[j][0]
+                maxcoord1 = [cities[i][1],cities[i][2]]
+                maxcoord2 = [cities[j][1], cities[j][2]]
     print("The shortest-distanced cities are:")
     print(mincity1, mincoord1, mincity2, mincoord2, "with distance: ", minv)
     print("The farthest cities are:")
