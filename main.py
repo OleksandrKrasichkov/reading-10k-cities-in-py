@@ -6,11 +6,7 @@ def main():
         for line in file:
             city, lat, lon = line.rstrip().split()
             cities.append((city, float(lat), float(lon)))
-    minv=math.sqrt(math.pow((cities[0][1] - cities[1][1]), 2) - math.pow((cities[0][2] - cities[1][2]), 2))  
-    mincity1 = cities[0][0]
-    mincity2 =cities[1][0]
-    mincoord1 = [cities[0][1], cities[0][2]]
-    mincoord2 = [cities[1][1], cities[1][2]]
+    minv,mincity1,mincity2,mincoord1,mincoord2 = setFirstMinv(cities)
     maxv = minv
     maxcity1 = mincity1
     maxcity2 = mincity2
@@ -45,11 +41,11 @@ def setFirstMinv(cities):
     for i in range(len(cities)-1):
         lat1=cities[i][1]
         lon1=cities[i][2]
-         for j in range(i+1,len(cities)):
+        for j in range(i+1,len(cities)):
              lats = lat1 - cities[j][1]
              lons = lon1 - cities[j][2]
              distance=math.sqrt(lats*lats + lons*lons)
-            if distance != 0:
+             if distance != 0:
                 return [distance, cities[i][0], cities[j][0],[cities[i][1],cities[i][2]],[cities[j][1],cities[j][2]]]
 
 
