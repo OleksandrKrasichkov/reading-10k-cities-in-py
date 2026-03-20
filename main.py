@@ -41,5 +41,23 @@ def main():
     print(maxcity1, maxcoord1, maxcity2, maxcoord2, "with distance: ", maxv)
 
 
+def setFirstMinv(cities):
+    for i in range(len(cities)-1):
+        lat1=cities[i][1]
+        lon1=cities[i][2]
+         for j in range(i+1,len(cities)):
+             lats = lat1 - cities[j][1]
+             lons = lon1 - cities[j][2]
+             distance=math.sqrt(lats*lats + lons*lons)
+            if distance != 0:
+                return {
+                        'minv': distance
+                        'mincity1': cities[i][0]
+                        'mincity2': cities[j][0]
+                        'mincoord1': [cities[i][1], cities[i][2]]
+                        'mincoord2' :  [cities[j][1], cities[j][2]]
+                }
+
+
 if __name__ == '__main__':
     main()
